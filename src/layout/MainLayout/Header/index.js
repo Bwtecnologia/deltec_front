@@ -69,23 +69,7 @@ const Header = () => {
                 ) : null}
             </Box>
 
-            {/* header search */}
-            <SearchSection />
             <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ flexGrow: 1 }} />
-
-            {/* mega-menu */}
-            <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                <MegaMenuSection />
-            </Box>
-
-            {/* live customization & localization */}
-            <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                <LocalizationSection />
-            </Box>
-
-            {/* notification & profile */}
-            <NotificationSection />
             <ProfileSection />
 
             {/* mobile header */}
