@@ -95,7 +95,7 @@ const JWTLogin = ({ loginProp, ...others }) => {
                 submit: null
             }}
             validationSchema={Yup.object().shape({
-                userName: Yup.string().max(255).required('UserName é obrigatório'),
+                userName: Yup.string().max(255).required('Usuário é obrigatório'),
                 password: Yup.string().max(255).required('Senha é obrigatória')
             })}
             onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
@@ -119,14 +119,14 @@ const JWTLogin = ({ loginProp, ...others }) => {
         >
             {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
                 <form noValidate onSubmit={handleSubmit} {...others}>
-                    <FormControl fullWidth error={Boolean(touched.email && errors.email)} sx={{ ...theme.typography.customInput }}>
+                    <FormControl fullWidth error={Boolean(touched.userName && errors.userName)} sx={{ ...theme.typography.customInput }}>
                         <InputLabel htmlFor="outlined-adornment-email-login">Usuário</InputLabel>
                         <OutlinedInput
                             id="outlined-adornment-email-login"
                             type="text"
-                            value={values.email}
+                            value={values.userName}
                             name="userName"
-                            placeholder="bwTecnologia@gmail.com"
+                            placeholder="deltec@gmail.com"
                             onBlur={handleBlur}
                             onChange={handleChange}
                             inputProps={{}}

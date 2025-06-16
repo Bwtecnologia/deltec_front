@@ -45,22 +45,15 @@ const Palette = (navType, presetColor) => {
                 black: colors.darkPaper
             },
             primary: {
-                // light: navType === 'dark' ? colors.darkPrimaryLight : colors.primaryLight,
-                light: '#149f93',
-                // main: navType === 'dark' ? colors.darkPrimaryMain : colors.primaryMain,
-                main: '#149f93',
-                dark: '#149f93',
-                // dark: navType === 'dark' ? colors.darkPrimaryDark : colors.primaryDark,
-                200: '#149f93',
-                // 200: navType === 'dark' ? colors.darkPrimary200 : colors.primary200,
-                800: '#149f93'
-                // 800: navType === 'dark' ? colors.darkPrimary800 : colors.primary800
+                light: navType === 'dark' ? colors.darkPrimaryLight : colors.primaryLight,
+                main: navType === 'dark' ? colors.darkPrimaryMain : colors.primaryMain,
+                dark: navType === 'dark' ? colors.darkPrimaryDark : colors.primaryDark,
+                200: navType === 'dark' ? colors.darkPrimary200 : colors.primary200,
+                800: navType === 'dark' ? colors.darkPrimary800 : colors.primary800
             },
             secondary: {
-                light: '#018278',
-                // light: navType === 'dark' ? colors.darkSecondaryLight : colors.secondaryLight,
-                // main: navType === 'dark' ? colors.darkSecondaryMain : colors.secondaryMain,
-                main: '#018278',
+                light: navType === 'dark' ? colors.darkSecondaryLight : colors.secondaryLight,
+                main: navType === 'dark' ? colors.darkSecondaryMain : colors.secondaryMain,
                 dark: navType === 'dark' ? colors.darkSecondaryDark : colors.secondaryDark,
                 200: navType === 'dark' ? colors.darkSecondary200 : colors.secondary200,
                 800: navType === 'dark' ? colors.darkSecondary800 : colors.secondary800
