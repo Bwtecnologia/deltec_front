@@ -81,7 +81,7 @@ const Profile2 = () => {
     return (
         <Grid container spacing={gridSpacing}>
             <Grid item xs={12}>
-                <MainCard title="Account Settings" content={false}>
+                <MainCard title="Editar usuário" content={false}>
                     <Grid container spacing={gridSpacing}>
                         <Grid item xs={12} lg={4}>
                             <CardContent>

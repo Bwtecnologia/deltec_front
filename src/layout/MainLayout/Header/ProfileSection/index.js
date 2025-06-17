@@ -39,6 +39,7 @@ import User1 from 'assets/images/users/user-round.svg';
 // assets
 import { IconLogout, IconSearch, IconSettings, IconUser } from '@tabler/icons';
 import useConfig from 'hooks/useConfig';
+import Layout from 'layout/Customization/Layout';
 
 // ==============================|| PROFILE MENU ||============================== //
 
@@ -234,6 +235,8 @@ const ProfileSection = () => {
                                                             }
                                                         />
                                                     </ListItemButton>
+
+                                                    <Layout />
                                                 </List>
                                             </Box>
                                         </PerfectScrollbar>

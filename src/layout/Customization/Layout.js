@@ -13,9 +13,9 @@ const Layout = () => {
     const { layout, drawerType, navType, rtlLayout, onChangeMenuType, onChangeLayout, onChangeDrawer, onChangeRTL } = useConfig();
 
     return (
-        <SubCard title="Layout">
+        <SubCard>
             <FormControl component="fieldset">
-                <FormLabel component="legend">Mode</FormLabel>
+                <FormLabel component="legend">Modo</FormLabel>
                 <RadioGroup
                     row
                     aria-label="layout"
@@ -26,7 +26,7 @@ const Layout = () => {
                     <FormControlLabel
                         value="light"
                         control={<Radio />}
-                        label="Light"
+                        label="Claro"
                         sx={{
                             '& .MuiSvgIcon-root': { fontSize: 28 },
                             '& .MuiFormControlLabel-label': { color: theme.palette.grey[900] }
@@ -35,7 +35,7 @@ const Layout = () => {
                     <FormControlLabel
                         value="dark"
                         control={<Radio />}
-                        label="Dark"
+                        label="Escuro"
                         sx={{
                             '& .MuiSvgIcon-root': { fontSize: 28 },
                             '& .MuiFormControlLabel-label': { color: theme.palette.grey[900] }
@@ -43,7 +43,7 @@ const Layout = () => {
                     />
                 </RadioGroup>
             </FormControl>
-            <FormControl component="fieldset" sx={{ mt: 2 }}>
+            {/* <FormControl component="fieldset" sx={{ mt: 2 }}>
                 <FormLabel component="legend">Menu Orientation</FormLabel>
                 <RadioGroup
                     aria-label="orientaion"
@@ -115,7 +115,7 @@ const Layout = () => {
                     }
                     label="RTL"
                 />
-            </FormControl>
+            </FormControl> */}
         </SubCard>
     );
 };
