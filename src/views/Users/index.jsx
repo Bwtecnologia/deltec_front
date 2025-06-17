@@ -2,10 +2,11 @@ import { Box, Grid, IconButton, Tooltip } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import { IconTrash, IconUsers } from '@tabler/icons';
 import { useApi } from 'hooks/useApi';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { gridSpacing } from 'store/constant';
 import MainCard from 'ui-component/cards/MainCard';
 import { EditeUser } from './components/EditeUser';
+import { InsertUser } from './components/insertUser';
 
 export function Users() {
     const api = useApi();
@@ -13,15 +14,14 @@ export function Users() {
     const [open, setOpen] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
 
-    async function getUsers() {
+    const getUsers = useCallback(async () => {
         try {
             const { data } = await api.getAllUsers();
-
             setUsers(data);
         } catch (error) {
             console.log('🚀 ~ getUsers ~ error:', error);
         }
-    }
+    }, [api]);
 
     useEffect(() => {
         getUsers();
@@ -59,7 +59,7 @@ export function Users() {
     ];
 
     return (
-        <MainCard title="Usuários">
+        <MainCard title="Usuários" secondary={<InsertUser getUsers={getUsers} />}>
             <Grid container spacing={gridSpacing}>
                 <Box sx={{ width: '100%', height: '100%' }}>
                     <DataGrid

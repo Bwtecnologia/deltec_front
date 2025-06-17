@@ -32,5 +32,13 @@ export const useApi = () => ({
         };
         const response = await api.get('/users', { headers });
         return response;
+    },
+    createUser: async (payload) => {
+        const token = localStorage.getItem('token');
+        const headers = {
+            Authorization: `Bearer ${token}`
+        };
+        const response = await api.post('/users', payload, { headers });
+        return response;
     }
 });
