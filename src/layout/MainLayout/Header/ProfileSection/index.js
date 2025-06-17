@@ -205,7 +205,7 @@ const ProfileSection = () => {
                                                     <ListItemButton
                                                         sx={{ borderRadius: `${borderRadius}px` }}
                                                         selected={selectedIndex === 0}
-                                                        onClick={(event) => handleListItemClick(event, 0, '/user/account-profile/profile1')}
+                                                        onClick={(event) => handleListItemClick(event, 0, '/main/usuarios')}
                                                     >
                                                         <ListItemIcon>
                                                             <IconSettings stroke={1.5} size="20px" />
@@ -213,7 +213,7 @@ const ProfileSection = () => {
                                                         <ListItemText
                                                             primary={
                                                                 <Typography variant="body2">
-                                                                    <FormattedMessage id="account-settings" />
+                                                                    <FormattedMessage id="Editar Usuários" />
                                                                 </Typography>
                                                             }
                                                         />
