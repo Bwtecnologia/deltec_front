@@ -6,12 +6,12 @@ import pages from './pages';
 import utilities from './utilities';
 import support from './support';
 import other from './other';
-import registrations from './registrations';
+import family from './family';
 
 // ==============================|| MENU ITEMS ||============================== //
 
 const menuItems = {
-    items: [dashboard, registrations]
+    items: [dashboard, family]
 };
 
 export default menuItems;

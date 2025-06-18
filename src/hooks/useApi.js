@@ -56,5 +56,13 @@ export const useApi = () => ({
         };
         const response = await api.delete(`/users/${id}`, { headers });
         return response;
+    },
+    getAllFamily: async () => {
+        const token = localStorage.getItem('token');
+        const headers = {
+            Authorization: `Bearer ${token}`
+        };
+        const response = await api.get('/oracle/resumo-familias', { headers });
+        return response;
     }
 });

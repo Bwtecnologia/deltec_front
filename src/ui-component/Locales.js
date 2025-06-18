@@ -14,6 +14,8 @@ const loadLocaleData = (locale) => {
             return import('utils/locales/ro.json');
         case 'zh':
             return import('utils/locales/zh.json');
+        case 'pt-br':
+            return import('utils/locales/pt-BR.json');
         default:
             return import('utils/locales/en.json');
     }

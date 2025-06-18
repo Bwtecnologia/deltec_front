@@ -2,14 +2,14 @@ import { IconUserCircle } from '@tabler/icons';
 
 const registrations = {
     id: 'lobby',
-    title: 'Recepção',
+    title: 'Suprimentos',
     type: 'group',
     children: [
         {
             id: 'agents',
-            title: 'Agentes',
+            title: 'Resumo Famílias',
             type: 'item',
-            url: '/main/agentes',
+            url: '/main/resumo-familias',
             icon: IconUserCircle,
             breadcrumbs: false
         }
