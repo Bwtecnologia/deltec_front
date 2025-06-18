@@ -107,10 +107,16 @@ export function InsertUser({ getUsers }) {
                         submit: null
                     }}
                     validationSchema={Yup.object().shape({
-                        name: Yup.string().max(255).required('Nome obrigatorio'),
-                        email: Yup.string().email('tem que ser um email valido').max(255).required('Email obrigatorio')
+                        name: Yup.string().max(255).required('Nome obrigatório'),
+                        email: Yup.string().email('Tem que ser um email válido').max(255).required('Email obrigatório'),
+                        phone: Yup.string().max(255).required('Telefone obrigatório'),
+                        password: Yup.string().max(255).required('Senha obrigatória'),
+                        username: Yup.string().max(255).required('Login obrigatório'),
+                        role: Yup.string().max(255).required('Função obrigatória')
                     })}
-                    onSubmit={async (values, { setErrors, setStatus, setSubmitting, errors }) => {}}
+                    onSubmit={async (values, { resetForm }) => {
+                        await handleCreateUser(values, resetForm);
+                    }}
                 >
                     {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values, resetForm }) => (
                         <form noValidate onSubmit={handleSubmit} style={{ padding: '20px', width: '450px' }}>
@@ -154,7 +160,15 @@ export function InsertUser({ getUsers }) {
                                         });
                                     }}
                                     onBlur={handleBlur}
-                                    renderInput={(params) => <TextField {...params} label="Tipo de usuário" name="role" />}
+                                    renderInput={(params) => (
+                                        <TextField
+                                            {...params}
+                                            label="Tipo de usuário"
+                                            name="role"
+                                            error={touched.role && Boolean(errors.role)}
+                                            helperText={touched.role && errors.role}
+                                        />
+                                    )}
                                 />
 
                                 <FormControl
@@ -248,16 +262,8 @@ export function InsertUser({ getUsers }) {
                                     </FormControl>
                                 )}
 
-                                <Button
-                                    // disabled={isSubmitting}
-                                    fullWidth
-                                    size="large"
-                                    type="submit"
-                                    variant="contained"
-                                    color="primary"
-                                    onClick={() => handleCreateUser(values, resetForm)}
-                                >
-                                    Atualizar usuário
+                                <Button fullWidth size="large" type="submit" variant="contained" color="primary">
+                                    Adicionar usuário
                                 </Button>
                             </Box>
                         </form>
