@@ -32,6 +32,7 @@ import { useState } from 'react';
 import { strengthIndicator } from 'utils/password';
 import { strengthColor } from 'utils/password-strength';
 import { useApi } from 'hooks/useApi';
+import { toast } from 'react-toastify';
 
 export function InsertUser({ getUsers }) {
     const [open, setOpen] = useState(false);
@@ -56,7 +57,8 @@ export function InsertUser({ getUsers }) {
         setLevel(strengthColor(temp));
     };
 
-    async function handleCreateUser(values) {
+    async function handleCreateUser(values, resetForm) {
+        const toastId = toast.loading('Enviando...');
         const payload = {
             name: values.name,
             phone: values.phone,
@@ -66,10 +68,25 @@ export function InsertUser({ getUsers }) {
             password: values.password
         };
         try {
-            const { data } = await api.createUser(payload);
-            console.log('🚀 ~ handleCreateUser ~ data:', data);
+            await api.createUser(payload);
+
+            toast.update(toastId, {
+                render: 'Usuário criado com sucesso',
+                type: 'success',
+                isLoading: false,
+                autoClose: 3000
+            });
+            resetForm();
+            getUsers();
+            setOpen(false);
         } catch (error) {
             console.log('🚀 ~ handleCreateUser ~ error:', error);
+            toast.update(toastId, {
+                render: 'Erro ao criar usuário',
+                type: 'error',
+                isLoading: false,
+                autoClose: 3000
+            });
         }
     }
 
@@ -93,11 +110,9 @@ export function InsertUser({ getUsers }) {
                         name: Yup.string().max(255).required('Nome obrigatorio'),
                         email: Yup.string().email('tem que ser um email valido').max(255).required('Email obrigatorio')
                     })}
-                    onSubmit={async (values, { setErrors, setStatus, setSubmitting, errors }) => {
-                        handleCreateUser(values);
-                    }}
+                    onSubmit={async (values, { setErrors, setStatus, setSubmitting, errors }) => {}}
                 >
-                    {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
+                    {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values, resetForm }) => (
                         <form noValidate onSubmit={handleSubmit} style={{ padding: '20px', width: '450px' }}>
                             <h3 style={{ textAlign: 'center' }}>Adicionar usuário</h3>
                             <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -240,6 +255,7 @@ export function InsertUser({ getUsers }) {
                                     type="submit"
                                     variant="contained"
                                     color="primary"
+                                    onClick={() => handleCreateUser(values, resetForm)}
                                 >
                                     Atualizar usuário
                                 </Button>

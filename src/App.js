@@ -25,6 +25,7 @@ import { ToastContainer } from 'react-toastify';
 
 const App = () => {
     const [loading, setLoading] = useState(false);
+    const configObj = JSON.parse(localStorage.getItem('berry-config'));
 
     useEffect(() => {
         dispatch(getMenu()).then(() => {
@@ -53,7 +54,7 @@ const App = () => {
                                     pauseOnFocusLoss
                                     draggable
                                     pauseOnHover
-                                    theme="light"
+                                    theme={configObj.navType}
                                 />
                             </>
                         </AuthProvider>
