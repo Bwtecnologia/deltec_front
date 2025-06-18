@@ -40,5 +40,21 @@ export const useApi = () => ({
         };
         const response = await api.post('/users', payload, { headers });
         return response;
+    },
+    editUser: async (id, payload) => {
+        const token = localStorage.getItem('token');
+        const headers = {
+            Authorization: `Bearer ${token}`
+        };
+        const response = await api.put(`/users/${id}`, payload, { headers });
+        return response;
+    },
+    deleteUser: async (id) => {
+        const token = localStorage.getItem('token');
+        const headers = {
+            Authorization: `Bearer ${token}`
+        };
+        const response = await api.delete(`/users/${id}`, { headers });
+        return response;
     }
 });

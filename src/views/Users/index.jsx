@@ -7,6 +7,7 @@ import { gridSpacing } from 'store/constant';
 import MainCard from 'ui-component/cards/MainCard';
 import { EditeUser } from './components/EditeUser';
 import { InsertUser } from './components/insertUser';
+import { toast } from 'react-toastify';
 
 export function Users() {
     const api = useApi();
@@ -26,6 +27,28 @@ export function Users() {
     useEffect(() => {
         getUsers();
     }, []);
+
+    async function handleDeleteUser(id) {
+        const toastId = toast.loading('Deletando...');
+        try {
+            await api.deleteUser(id);
+            getUsers();
+            toast.update(toastId, {
+                render: 'Usuário deletado com sucesso',
+                type: 'success',
+                isLoading: false,
+                autoClose: 3000
+            });
+        } catch (error) {
+            toast.update(toastId, {
+                render: 'Erro ao deletar usuário',
+                type: 'error',
+                isLoading: false,
+                autoClose: 3000
+            });
+            console.log('🚀 ~ handleDeleteUser ~ error:', error);
+        }
+    }
 
     const columns = [
         { field: 'name', headerName: 'Nome', flex: 1 },
@@ -49,7 +72,7 @@ export function Users() {
                         </IconButton>
                     </Tooltip>
                     <Tooltip title="Deletar">
-                        <IconButton>
+                        <IconButton onClick={() => handleDeleteUser(params.row.id)}>
                             <IconTrash />
                         </IconButton>
                     </Tooltip>
@@ -71,7 +94,7 @@ export function Users() {
                     />
                 </Box>
             </Grid>
-            <EditeUser open={open} setOpen={setOpen} currentUser={selectedUser} />
+            <EditeUser open={open} setOpen={setOpen} currentUser={selectedUser} getUsers={getUsers} />
         </MainCard>
     );
 }
