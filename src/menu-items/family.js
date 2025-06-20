@@ -1,4 +1,4 @@
-import { IconUserCircle } from '@tabler/icons';
+import { IconUserCircle, IconComponents } from '@tabler/icons';
 
 const registrations = {
     id: 'lobby',
@@ -6,11 +6,19 @@ const registrations = {
     type: 'group',
     children: [
         {
-            id: 'agents',
+            id: 'Resumo',
             title: 'Resumo Famílias',
             type: 'item',
             url: '/main/resumo-familias',
             icon: IconUserCircle,
+            breadcrumbs: false
+        },
+        {
+            id: 'compilado',
+            title: 'Compilado',
+            type: 'item',
+            url: '/main/compilado',
+            icon: IconComponents,
             breadcrumbs: false
         }
     ]

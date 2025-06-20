@@ -7,6 +7,7 @@ import AuthGuard from 'utils/route-guard/AuthGuard';
 import { Agents } from 'views/pages/Agents';
 import { Users } from 'views/Users';
 import { Family } from 'views/Family';
+import { Compilado } from 'views/Compilado';
 
 // dashboard routing
 const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')));
@@ -33,6 +34,10 @@ const MainRoutes = {
         {
             path: '/main/resumo-familias',
             element: <Family />
+        },
+        {
+            path: '/main/compilado',
+            element: <Compilado />
         }
     ]
 };
