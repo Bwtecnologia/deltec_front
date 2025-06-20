@@ -61,7 +61,9 @@ const ProfileSection = () => {
     const anchorRef = useRef(null);
     const handleLogout = async () => {
         try {
-            await logout();
+            navigate('/');
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
         } catch (err) {
             console.error(err);
         }
@@ -230,7 +232,7 @@ const ProfileSection = () => {
                                                         <ListItemText
                                                             primary={
                                                                 <Typography variant="body2">
-                                                                    <FormattedMessage id="logout" />
+                                                                    <FormattedMessage id="Sair" />
                                                                 </Typography>
                                                             }
                                                         />

@@ -25,9 +25,7 @@ const AuthSlider = ({ items }) => {
                         <Typography variant="h1">{item.title}</Typography>
                     </Grid>
                     <Grid item>
-                        <Typography variant="h4" sx={{ color: '#000' }}>
-                            {item.description}
-                        </Typography>
+                        <Typography variant="h4">{item.description}</Typography>
                     </Grid>
                 </Grid>
             ))}
